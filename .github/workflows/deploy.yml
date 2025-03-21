@@ -1,0 +1,25 @@
+name: deploy.yml
+
+on:
+  workflow_dispatch:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+
+    environment: dev
+
+    env:
+      REPOSITORY_NAME: ${{ github.repository }}
+      AUTO_APPROVE: ${{ vars.AUTO_APPROVE }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Echo repository name
+      if: env.AUTO_APPROVE == 'true'
+      run: |
+         sleep 180
+         echo "Hello, this is the repository: $REPOSITORY_NAME"
+         echo "Environment: ${{ github.event.inputs.environment }}"
