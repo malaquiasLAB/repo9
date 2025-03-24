@@ -20,6 +20,6 @@ jobs:
     - name: Echo repository name
       if: env.AUTO_APPROVE == 'true'
       run: |
-         sleep 180
+         sleep 300
          echo "Hello, this is the repository: $REPOSITORY_NAME"
          echo "Environment: ${{ github.event.inputs.environment }}"
